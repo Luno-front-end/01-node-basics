@@ -8,7 +8,7 @@ const contactsPath = path.join("./db/contacts.json");
 // TODO: задокументировать каждую функцию
 function listContacts() {
   fs.readFile(contactsPath)
-    .then((data) => console.table(data.toString()))
+    .then((data) => console.table(JSON.parse(data)))
     .catch((error) => {
       throw error;
     });
@@ -42,7 +42,6 @@ function removeContact(contactId) {
     });
 }
 // removeContact(10);
-
 function addContact(name, email, phone) {
   fs.readFile(contactsPath)
     .then((data) => {
@@ -61,4 +60,4 @@ function addContact(name, email, phone) {
 
 // addContact("max", "gma@gma", 2312852);
 
-module.export = { listContacts, getContactById, removeContact, addContact };
+module.exports = { listContacts, getContactById, removeContact, addContact };

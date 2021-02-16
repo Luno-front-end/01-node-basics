@@ -5,6 +5,8 @@ const {
   addContact,
 } = require("./contacts");
 
+// import shortid from "shortid";
+
 const argv = require("yargs").argv;
 
 // TODO: рефакторить
