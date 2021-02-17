@@ -1,6 +1,8 @@
 const fs = require("fs").promises;
 const path = require("path");
 
+const shortid = require("shortid");
+
 const contactsPath = path.join("./db/contacts.json");
 
 // fs.writeFile(filename, data, [options]);
@@ -46,7 +48,8 @@ function addContact(name, email, phone) {
   fs.readFile(contactsPath)
     .then((data) => {
       const parsedData = JSON.parse(data);
-      const newContact = { name, email, phone };
+      const id = shortid.generate();
+      const newContact = { id, name, email, phone };
       const addContact = parsedData.push(newContact);
 
       console.table(addContact);
